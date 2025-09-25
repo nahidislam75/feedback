@@ -1,7 +1,7 @@
-import { MessageSquare, Users, Star, Sparkles } from "lucide-react"
+import { MessageSquare, Users, Star, Sparkles } from "lucide-react";
 
 interface AppHeaderProps {
-  feedbackCount: number
+  feedbackCount: number;
 }
 
 export function AppHeader({ feedbackCount }: AppHeaderProps) {
@@ -14,10 +14,16 @@ export function AppHeader({ feedbackCount }: AppHeaderProps) {
         <Sparkles className="h-8 w-8 text-luxury-gold animate-pulse" />
       </div>
       <div className="absolute top-32 right-16 opacity-10">
-        <Sparkles className="h-6 w-6 text-warm-accent animate-pulse" style={{ animationDelay: "1s" }} />
+        <Sparkles
+          className="h-6 w-6 text-warm-accent animate-pulse"
+          style={{ animationDelay: "1s" }}
+        />
       </div>
       <div className="absolute bottom-20 left-1/4 opacity-10">
-        <Sparkles className="h-4 w-4 text-luxury-gold animate-pulse" style={{ animationDelay: "2s" }} />
+        <Sparkles
+          className="h-4 w-4 text-luxury-gold animate-pulse"
+          style={{ animationDelay: "2s" }}
+        />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 py-32 lg:py-40">
@@ -26,19 +32,27 @@ export function AppHeader({ feedbackCount }: AppHeaderProps) {
             <h1 className="font-playfair text-6xl md:text-7xl lg:text-8xl font-light tracking-tight">
               <span className="brand-title">Mokadderul's</span>
             </h1>
-            <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-normal text-primary">Feedback App</h2>
+            <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-normal text-primary">
+              Feedback App
+            </h2>
           </div>
 
           <p className="elegant-subtitle text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed">
-            Your feedback shapes our future. Join the conversation and help us build something
-            <span className="text-luxury-gold font-medium"> extraordinary </span>
+            Your feedback shapes our future. Join the conversation and help us
+            build something
+            <span className="text-luxury-gold font-medium">
+              {" "}
+              extraordinary{" "}
+            </span>
             together.
           </p>
 
           <div className="flex items-center justify-center gap-12 pt-12">
             <div className="flex items-center gap-4 text-muted-foreground fade-in-stagger glass-card px-6 py-3 rounded-full">
               <MessageSquare className="h-5 w-5 text-luxury-gold" />
-              <span className="text-sm font-medium">{feedbackCount} Insights</span>
+              <span className="text-sm font-medium">
+                {feedbackCount} Insights
+              </span>
             </div>
             <div className="flex items-center gap-4 text-muted-foreground fade-in-stagger glass-card px-6 py-3 rounded-full">
               <Users className="h-5 w-5 text-warm-accent" />
@@ -52,5 +66,5 @@ export function AppHeader({ feedbackCount }: AppHeaderProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

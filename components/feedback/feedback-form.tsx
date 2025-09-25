@@ -1,39 +1,45 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { useToast } from "@/hooks/use-toast"
-import { StarRating } from "@/components/ui/star-rating"
-import { Send, Sparkles } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import { StarRating } from "@/components/ui/star-rating";
+import { Send, Sparkles } from "lucide-react";
 
 interface FeedbackFormProps {
-  onSubmitSuccess: () => void
+  onSubmitSuccess: () => void;
 }
 
 export function FeedbackForm({ onSubmitSuccess }: FeedbackFormProps) {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [feedback, setFeedback] = useState("")
-  const [rating, setRating] = useState(0)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const { toast } = useToast()
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [feedback, setFeedback] = useState("");
+  const [rating, setRating] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!name.trim() || !email.trim() || !feedback.trim()) {
       toast({
         title: "Missing Information",
         description: "Please fill in all fields to submit your feedback",
         variant: "destructive",
-      })
-      return
+      });
+      return;
     }
 
     if (rating === 0) {
@@ -41,11 +47,11 @@ export function FeedbackForm({ onSubmitSuccess }: FeedbackFormProps) {
         title: "Missing Rating",
         description: "Please provide a star rating for your feedback",
         variant: "destructive",
-      })
-      return
+      });
+      return;
     }
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     try {
       const response = await fetch("/api/feedback", {
@@ -59,35 +65,33 @@ export function FeedbackForm({ onSubmitSuccess }: FeedbackFormProps) {
           feedback: feedback.trim(),
           rating,
         }),
-      })
+      });
 
       if (response.ok) {
         toast({
           title: "Thank you!",
           description: "Your feedback has been submitted successfully.",
-        })
+        });
 
-        // Clear form
-        setName("")
-        setEmail("")
-        setFeedback("")
-        setRating(0)
+        setName("");
+        setEmail("");
+        setFeedback("");
+        setRating(0);
 
-        // Notify parent component
-        onSubmitSuccess()
+        onSubmitSuccess();
       } else {
-        throw new Error("Failed to submit feedback")
+        throw new Error("Failed to submit feedback");
       }
     } catch (error) {
       toast({
         title: "Submission Failed",
         description: "Unable to submit feedback. Please try again.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <Card className="border-0 shadow-2xl bg-card/95 backdrop-blur-lg card-hover relative overflow-hidden">
@@ -103,7 +107,8 @@ export function FeedbackForm({ onSubmitSuccess }: FeedbackFormProps) {
           <Sparkles className="h-6 w-6 text-luxury-gold" />
         </div>
         <CardDescription className="elegant-subtitle text-center text-xl text-muted-foreground max-w-2xl mx-auto">
-          We value every voice. Share your experience and help us improve our journey together.
+          We value every voice. Share your experience and help us improve our
+          journey together.
         </CardDescription>
       </CardHeader>
 
@@ -111,7 +116,10 @@ export function FeedbackForm({ onSubmitSuccess }: FeedbackFormProps) {
         <form onSubmit={handleSubmit} className="space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
-              <Label htmlFor="name" className="text-sm font-medium text-foreground">
+              <Label
+                htmlFor="name"
+                className="text-sm font-medium text-foreground"
+              >
                 Full Name
               </Label>
               <Input
@@ -125,7 +133,10 @@ export function FeedbackForm({ onSubmitSuccess }: FeedbackFormProps) {
               />
             </div>
             <div className="space-y-4">
-              <Label htmlFor="email" className="text-sm font-medium text-foreground">
+              <Label
+                htmlFor="email"
+                className="text-sm font-medium text-foreground"
+              >
                 Email Address
               </Label>
               <Input
@@ -141,9 +152,15 @@ export function FeedbackForm({ onSubmitSuccess }: FeedbackFormProps) {
           </div>
 
           <div className="space-y-4">
-            <Label className="text-sm font-medium text-foreground">Overall Rating</Label>
+            <Label className="text-sm font-medium text-foreground">
+              Overall Rating
+            </Label>
             <div className="flex items-center gap-4 p-6 rounded-xl bg-accent/20 border border-border/20">
-              <StarRating rating={rating} onRatingChange={setRating} size="lg" />
+              <StarRating
+                rating={rating}
+                onRatingChange={setRating}
+                size="lg"
+              />
               <span className="text-base text-muted-foreground font-medium">
                 {rating > 0 ? (
                   <span className="text-luxury-gold">
@@ -151,12 +168,12 @@ export function FeedbackForm({ onSubmitSuccess }: FeedbackFormProps) {
                     {rating === 5
                       ? "Exceptional!"
                       : rating === 4
-                        ? "Great!"
-                        : rating === 3
-                          ? "Good"
-                          : rating === 2
-                            ? "Fair"
-                            : "Needs improvement"}
+                      ? "Great!"
+                      : rating === 3
+                      ? "Good"
+                      : rating === 2
+                      ? "Fair"
+                      : "Needs improvement"}
                   </span>
                 ) : (
                   "Click to rate"
@@ -166,7 +183,10 @@ export function FeedbackForm({ onSubmitSuccess }: FeedbackFormProps) {
           </div>
 
           <div className="space-y-4">
-            <Label htmlFor="feedback" className="text-sm font-medium text-foreground">
+            <Label
+              htmlFor="feedback"
+              className="text-sm font-medium text-foreground"
+            >
               Your Feedback
             </Label>
             <Textarea
@@ -202,5 +222,5 @@ export function FeedbackForm({ onSubmitSuccess }: FeedbackFormProps) {
         </form>
       </CardContent>
     </Card>
-  )
+  );
 }

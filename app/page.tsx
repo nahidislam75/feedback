@@ -1,30 +1,29 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { AppHeader } from "@/components/feedback/app-header"
-import { FeedbackForm } from "@/components/feedback/feedback-form"
-import { FeedbackList } from "@/components/feedback/feedback-list"
-import type { Feedback } from "@/app/api/feedback/route"
+import { useState, useEffect } from "react";
+import { AppHeader } from "@/components/feedback/app-header";
+import { FeedbackForm } from "@/components/feedback/feedback-form";
+import { FeedbackList } from "@/components/feedback/feedback-list";
+import type { Feedback } from "@/app/api/feedback/route";
 
 export default function FeedbackApp() {
-  const [feedbackList, setFeedbackList] = useState<Feedback[]>([])
+  const [feedbackList, setFeedbackList] = useState<Feedback[]>([]);
 
-  // Load feedback on component mount
   useEffect(() => {
-    fetchFeedback()
-  }, [])
+    fetchFeedback();
+  }, []);
 
   const fetchFeedback = async () => {
     try {
-      const response = await fetch("/api/feedback")
+      const response = await fetch("/api/feedback");
       if (response.ok) {
-        const data = await response.json()
-        setFeedbackList(data)
+        const data = await response.json();
+        setFeedbackList(data);
       }
     } catch (error) {
-      console.error("Error fetching feedback:", error)
+      console.error("Error fetching feedback:", error);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -35,5 +34,5 @@ export default function FeedbackApp() {
         <FeedbackList feedbackList={feedbackList} onUpdate={fetchFeedback} />
       </div>
     </div>
-  )
+  );
 }

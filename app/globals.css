@@ -4,7 +4,6 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Enhanced sophisticated warm cream theme inspired by luxury design */
   --background: oklch(0.985 0.008 85);
   --foreground: oklch(0.12 0.015 85);
   --card: oklch(0.995 0.005 85);
@@ -141,7 +140,11 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     /* Added subtle texture background */
-    background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.02) 1px, transparent 0);
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(0, 0, 0, 0.02) 1px,
+      transparent 0
+    );
     background-size: 32px 32px;
   }
 }
@@ -152,7 +155,11 @@
   letter-spacing: -0.05em;
   line-height: 0.85;
   font-family: var(--font-sans);
-  background: linear-gradient(135deg, var(--foreground) 0%, var(--luxury-gold) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--foreground) 0%,
+    var(--luxury-gold) 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -190,8 +197,8 @@
 
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.08), 0 25px 50px -12px rgba(0, 0, 0, 0.04), 0 0 0 1px
-    rgba(255, 255, 255, 0.05);
+  box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.08),
+    0 25px 50px -12px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
 }
 
@@ -230,15 +237,21 @@
 
 /* Luxury button styles */
 .luxury-button {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--luxury-gold) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--luxury-gold) 100%
+  );
   border: none;
-  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .luxury-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Enhanced star rating styles */
@@ -263,12 +276,20 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, var(--muted-foreground) 0%, var(--luxury-gold) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--muted-foreground) 0%,
+    var(--luxury-gold) 100%
+  );
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--warm-accent) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--warm-accent) 100%
+  );
 }
 
 /* Added glass morphism effect */
@@ -276,7 +297,8 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Enhanced input focus styles */
